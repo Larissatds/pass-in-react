@@ -5,7 +5,7 @@ import { TableHeader } from './table/table-header'
 import { TableCell } from './table/table-cell'
 import { TableRow } from './table/table-row'
 import { ChangeEvent, useState } from 'react'
-import { anttendees } from '../data/attendees'
+import { attendees } from '../data/attendees'
 import dayjs  from 'dayjs'
 import 'dayjs/locale/pt-br'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -17,7 +17,7 @@ export function AttendeeList(){
     const [search, setSearch] = useState('')
     const [page, setPage] = useState(1)
 
-    const totalPages = Math.ceil(anttendees.length / 10)
+    const totalPages = Math.ceil(attendees.length / 10)
 
 
     function onSearchInputChanged(event: ChangeEvent<HTMLInputElement>){
@@ -67,7 +67,7 @@ export function AttendeeList(){
                         </tr>
                     </thead>
                     <tbody>
-                        { anttendees.slice((page - 1) * 10, page * 10).map((attendee)=>{
+                        { attendees.slice((page - 1) * 10, page * 10).map((attendee)=>{
                             return (
                                 <TableRow key={attendee.id}>
                                     <TableCell>
@@ -94,7 +94,7 @@ export function AttendeeList(){
                     <tfoot>
                         <tr>
                             <TableCell colSpan={3}>
-                                Mostrando 10 de {anttendees.length} itens
+                                Mostrando 10 de {attendees.length} itens
                             </TableCell>
                             <TableCell colSpan={3} className='text-right'>
                                 <div className='inline-flex items-center gap-8'>
